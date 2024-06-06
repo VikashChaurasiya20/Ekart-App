@@ -1,0 +1,14 @@
+
+.product{
+    margin: 20px;
+    padding: 10px;
+    font-size: 18px;
+}
+p{
+    font-weight: 600;
+    font-size: 20px;
+}
+span{
+    color: rgb(255, 166, 0);
+}
+
