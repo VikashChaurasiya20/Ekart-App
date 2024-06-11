@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'Models/Product';
 
 @Component({
   selector: 'product-list',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  selectedProduct:Product;
   products = [
     {
       id: 1,
-      name: "Nike React Infinity Run Flyknit",
+      name: "Nike React Infinity Run FlyKnit",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       brand: "NIKE",
       gender: "MEN",
@@ -21,7 +23,7 @@ export class ProductListComponent implements OnInit {
       is_in_inventory: true,
       items_left: 3,
       imageURL: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-665455a5-45de-40fb-945f-c1852b82400d/react-infinity-run-flyknit-mens-running-shoe-zX42Nc.jpg",
-      slug: "nike-react-infinity-run-flyknit"
+      slug: "nike-react-infinity-run-flyKnit"
     },
     {
       id: 2,
@@ -67,7 +69,7 @@ export class ProductListComponent implements OnInit {
       is_in_inventory: false,
       items_left: 3,
       imageURL: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
-      slug: "nike-joyride-run-flyknit"
+      slug: "nike-joyride-run-flyKnit"
     },
     {
       id: 5,
@@ -225,21 +227,6 @@ export class ProductListComponent implements OnInit {
       slug: "nike-renew-run"
     },
     {
-      id: 16,
-      name: "Bridgport Advice",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      brand: "HUSHPUPPIES",
-      gender: "MEN",
-      category: "FORMAL",
-      size: [6, 7, 8, 9, 10],
-      color: ["White", "Black"],
-      price: 30,
-      is_in_inventory: false,
-      items_left: 4,
-      imageURL: "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/BRIDGPORT_ADVICE-BLACK_1_800x800.jpg?v=1576567903",
-      slug: "bridgport-advice"
-    },
-    {
       id: 15,
       name: "Beck",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -255,6 +242,22 @@ export class ProductListComponent implements OnInit {
       imageURL: "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/Beck-Black_800x800.jpg",
       slug: "beck"
     },
+    {
+      id: 16,
+      name: "Bridgport Advice",
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      brand: "HUSHPUPPIES",
+      gender: "MEN",
+      category: "FORMAL",
+      size: [6, 7, 8, 9, 10],
+      color: ["White", "Black"],
+      price: 30,
+      is_in_inventory: false,
+      items_left: 4,
+      imageURL: "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/BRIDGPORT_ADVICE-BLACK_1_800x800.jpg?v=1576567903",
+      slug: "bridgport-advice"
+    },
+    
     {
       id: 17,
       name: "Fester",
@@ -537,6 +540,19 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ 
+  totalProduct= this.products.length;
 
+  totalProductInStock = this.products.filter(p=>p.is_in_inventory===true).length;
 
+  totalProductOutOfStock = this.products.filter(p=>p.is_in_inventory===false ).length;
+ 
+  @Input()
+  searchText:string=''
+
+  selectedFilterRadioButton:string='all';
+  onFilterChanged(value:string){
+    this.selectedFilterRadioButton= value;
+    // console.log('OnFilter Called!! '+value);
+  }
 }

@@ -1,9 +1,10 @@
 
 <div class="product">
     <!-- search bar  -->
-    <search></search>
+    <search (searchTextChanged)="setSearchText($event)"></search>
     <!-- Product List -->
-     <product-list></product-list>
+     <product-list [searchText]="searchText" #productListComponent></product-list>
+     <product-details *ngIf="productListComponent.selectedProduct"></product-details>
     <!-- <p>Mobile: <span>iPhone 15 pro</span> </p>
     <p>Price: <span>$12500</span> </p>
     <p>color: <span>Dark grey</span> </p>
@@ -12,3 +13,4 @@
 
 </div>
 
+<!-- 31 video 13 min -->

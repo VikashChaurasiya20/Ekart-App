@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-
+searchText:string='';
   constructor() { }
-name!:string;
+
   ngOnInit(): void {
   }
-onNameChange(event:any){
- this.name=event.target.value
+  setSearchText(value:string){
+    console.log("Search Value is "+value)
+this.searchText=value
+  }
 
-  
-}
 }

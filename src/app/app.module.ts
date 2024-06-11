@@ -11,6 +11,9 @@ import { MainMenuComponent } from './Component/header/main-menu/main-menu.compon
 import { ContainerComponent } from './Component/Container/container.component';
 import { SearchComponent } from './Component/Container/search/search.component';
 import { ProductListComponent } from './Component/Container/product-list/product-list.component';
+import { FilterComponent } from './Component/Container/product-list/filter/filter.component';
+import { ProductComponent } from './Component/Container/product-list/product/product.component';
+import { ProductDetailsComponent } from './Component/Container/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ProductListComponent } from './Component/Container/product-list/product
     MainMenuComponent,
     ContainerComponent,
     SearchComponent,
-    ProductListComponent
+    ProductListComponent,
+    FilterComponent,
+    ProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
