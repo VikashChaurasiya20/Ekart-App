@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
   selector: 'container',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 searchText:string='';
+@ViewChild(ProductListComponent)
+productListComponent: ProductListComponent
   constructor() { }
 
   ngOnInit(): void {

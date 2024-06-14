@@ -1,16 +1,36 @@
-
 <div class="product">
-    <!-- search bar  -->
-    <search (searchTextChanged)="setSearchText($event)"></search>
-    <!-- Product List -->
-     <product-list [searchText]="searchText" #productListComponent></product-list>
-     <product-details *ngIf="productListComponent.selectedProduct"></product-details>
-    <!-- <p>Mobile: <span>iPhone 15 pro</span> </p>
+  <!-- search bar  -->
+  <search (searchTextChanged)="setSearchText($event)"></search>
+  <!-- Product List -->
+  <product-list [searchText]="searchText" #productListComponent></product-list>
+  <product-details
+    *ngIf="productListComponent.selectedProduct"
+    [productListComp]="productListComponent"
+  ></product-details>
+  <div class="ekart-featured-products">
+    <div class="ekart-featured-products-heading">
+      <h1>Latest Arrival in Popular Brand</h1>
+    </div>
+    <featured-brands>
+      <h3 class="title">New Arrival in Nike</h3>
+      <button class="call-to-action">Show New Arrival in Nike</button>
+    </featured-brands>
+    <featured-brands>
+      <h3 class="title">New Arrival in Adidas</h3>
+      <button class="call-to-action">Show New Arrival in Adidas</button>
+      </featured-brands
+    >
+    <featured-brands>
+        <h3 class="title">New Arrival in Campus</h3>
+        <button class="call-to-action">Show New Arrival in Campus</button>
+        </featured-brands
+    >
+  </div>
+  <!-- <p>Mobile: <span>iPhone 15 pro</span> </p>
     <p>Price: <span>$12500</span> </p>
     <p>color: <span>Dark grey</span> </p>
 <input (input)="onNameChange($event)">
 <p>Name: {{name}}</p> -->
-
 </div>
 
 <!-- 31 video 13 min -->
